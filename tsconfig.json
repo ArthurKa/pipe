@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "types": [
+      "@total-typescript/ts-reset",
+      "@types/node",
+    ],
+  },
+  "include": [
+    "src",
+  ],
+}

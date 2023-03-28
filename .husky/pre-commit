@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint:check -- --max-warnings 0
+npm run ts:noWatch
+npm run ts:noWatch -- -p tests/tsconfig.json
+npm run build
+npm t

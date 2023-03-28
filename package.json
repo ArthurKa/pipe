@@ -1,0 +1,53 @@
+{
+  "name": "@arthurka/pipe",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build:clean": "rm -rf build/*",
+    "ts:noWatch": "tsc --noEmit",
+    "ts": "npm run ts:noWatch -- -w",
+    "lint:check": "eslint --ext js,jsx,ts,tsx src",
+    "lint:fix": "npm run lint:check -- --fix",
+    "ts-compile": "tsc --declaration",
+    "my-compile": "node ../compile.js",
+    "build": "npm run build:clean && npm run ts-compile && npm run my-compile",
+    "pu": "npm pu && git p && git pt",
+    "deploy": "npm run build && npm run pu",
+    "jest:noWatch": "jest --detectOpenHandles tests",
+    "jest": "npm run jest:noWatch -- --watch",
+    "tsd:noWatch": "tsd -f tests/**/*.test-d.ts --show-diff",
+    "tsd": "nodemon -w tests -e ts -x \"clear && npm run tsd:noWatch\"",
+    "test": "npm run jest:noWatch && npm run tsd:noWatch",
+    "prepare": "node -e \"try { require('husky').install(); } catch(e) { if(e.code !== 'MODULE_NOT_FOUND') throw e; }\""
+  },
+  "dependencies": {
+    "ts-toolbelt": "9.6.0"
+  },
+  "devDependencies": {
+    "@arthurka/eslint": "3.12.0",
+    "@total-typescript/ts-reset": "0.4.2",
+    "@tsconfig/node18-strictest": "1.0.0",
+    "@types/jest": "29.5.0",
+    "@types/node": "18.13.0",
+    "husky": "8.0.3",
+    "jest": "29.5.0",
+    "nodemon": "2.0.22",
+    "ts-jest": "29.0.5",
+    "tsd": "0.28.0",
+    "typescript": "5.0.2"
+  },
+  "author": {
+    "name": "ArthurKa",
+    "email": "arthur.katruk@gmail.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurKa/pipe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArthurKa/pipe/issues"
+  },
+  "homepage": "https://github.com/ArthurKa/pipe#readme"
+}
